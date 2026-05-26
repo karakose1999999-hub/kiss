@@ -1,0 +1,62 @@
+function createGeneralAutoGuardState(ctx) {
+    return {
+        running: false,
+        decisionTimer: null,
+        enabled: !!(ctx && ctx.settings && ctx.settings.guardEnabled),
+        queueSignature: "",
+        queueRoomId: "",
+        queueStableSince: 0,
+        queueLastObservedAt: 0,
+        queueObserveTimer: null,
+        playerCount: 0,
+        playerCountRoomId: "",
+        lowPlayerCount: 0,
+        lowPlayerRoomId: "",
+        lowPlayerSince: 0,
+        changeInFlight: false,
+        queueRecoveryInFlight: false,
+        queueReloadInFlight: false,
+        activeRecoveryAction: "",
+        recoveryEvents: [],
+        lastQueueRecoveryAt: 0,
+        lastQueueReloadAt: 0,
+        lastRoomChangeAt: 0,
+        lastRoomChangeRejectedAt: 0,
+        lastObservationKey: "",
+        lastObservationChangeAt: 0,
+        lastProfileRecoveryClickAt: 0,
+        lastProfilePokeAt: 0,
+        lastProfilePokeBlockedLogAt: 0,
+        profilePokeInFlight: false,
+        profilePokeTimer: null,
+        profileRecoveryInFlight: false,
+        profileRecoveryStartedAt: 0,
+        profileRecoveryBeforeRoomId: "",
+        profileRecoveryBeforeHref: "",
+        profileRecoveryWatchersInstalled: false
+    };
+}
+
+function createGeneralAutoGuardConfig() {
+    return {
+        QUEUE_STUCK_CHANGE_AFTER: 60000,
+        LOW_PLAYER_LIMIT: 3,
+        LOW_PLAYER_CHANGE_AFTER: 90000,
+        ROOM_CHANGE_COOLDOWN: 180000,
+        QUEUE_STUCK_RECOVERY_COOLDOWN: 120000,
+        QUEUE_STUCK_RECOVERY_ATTEMPTS: 3,
+        QUEUE_STUCK_RECOVERY_RETRY_DELAY: 1200,
+        QUEUE_STUCK_RECOVERY_ROSTER_MAX_AGE: 180000,
+        QUEUE_STUCK_RELOAD_COOLDOWN: 120000,
+        QUEUE_STUCK_RELOAD_DELAY: 1500,
+        QUEUE_OBSERVE_INTERVAL: 2000,
+        QUEUE_DECISION_INTERVAL: 30000,
+        PROFILE_RECOVERY_IDLE_AFTER: 120000,
+        PROFILE_RECOVERY_COOLDOWN: 300000,
+        PROFILE_RECOVERY_BAD_COOLDOWN: 900000,
+        PROFILE_RECOVERY_MONITOR_MS: 5000,
+        PROFILE_RECOVERY_PENALTY_KEY: "kiss_active_guard_profile_recovery_penalty_until",
+        PROFILE_POKE_INTERVAL_MS: 10000,
+        TIMER_JITTER_MS: 1500
+    };
+}
