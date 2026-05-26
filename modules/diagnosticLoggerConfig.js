@@ -1,0 +1,127 @@
+const LOG_FILE_NAME = "active-guard-run.log";
+const LIVE_LOG_FILE_NAME = "active-guard-run.live.log";
+const THROTTLE_MS = 10000;
+const LIVE_FLUSH_INTERVAL_MS = 30000;
+const HEARTBEAT_INTERVAL_MS = 60000;
+const CRITICAL_FLUSH_DEBOUNCE_MS = 1000;
+const LOGGER_VERSION = "live-flush-v1";
+const MAX_FIELD_LENGTH = 3000;
+
+const IMPORTANT_PATTERNS = [
+  "[ACTIVE GUARD]",
+  "[GAME STATE]",
+  "[AUTO KISS]",
+  "[KISS FALLBACK]",
+  "[KISS FALLBACK HOST] issue",
+  "[KISS FALLBACK GLOBAL]",
+  "[ROOM LOCK]",
+  "[PERFORMANCE]",
+  "[MAINTENANCE HOST]",
+  "[AUTO SPIN]",
+  "__KISS_ACTIVITY_EVENT__",
+  "__KISS_ROSTER_EVENT__",
+  "__KISS_NET_EVENT__",
+  "__KISS_NAV_EVENT__",
+  "[NET WATCHER",
+  "__KISS_ROOM_ID__",
+  "suspicious navigation",
+  "suspicious route recovery",
+  "witnessed-seat-displacement",
+  "witness-correlation-check",
+  "witness-correlation-miss",
+  "players-joined",
+  "players-left",
+  "own-seat-lost",
+  "possible-vip-displacement",
+  "[ROOM LOCK]",
+  "undefined-route",
+  "[INJECT ERROR]",
+  "[INJECT OK]",
+  "[GameTemplate]",
+  "[RendererConsole]",
+  "[WebviewConsole]",
+  "[GameRuntime] status",
+  "did-start-navigation",
+  "did-redirect-navigation",
+  "did-navigate-in-page",
+  "did-navigate",
+  "did-fail-load",
+  "render-process-gone",
+  "unresponsive",
+  "responsive",
+  "webview loaded",
+  "window-all-closed",
+  "accounts window closed",
+  "before-quit",
+  "will-quit",
+  "quit"
+];
+
+const CRITICAL_PATTERNS = [
+  "game/room?=undefined",
+  "undefined-route",
+  "suspicious navigation",
+  "suspicious route recovery",
+  "witnessed-seat-displacement",
+  "witness-correlation-check",
+  "witness-correlation-miss",
+  "players-joined",
+  "players-left",
+  "own-seat-lost",
+  "possible-vip-displacement",
+  "did-fail-load",
+  "render-process-gone",
+  "unresponsive",
+  "__KISS_ROOM_ID__",
+  "[ACTIVE GUARD] Rastgele masa karar",
+  "[ACTIVE GUARD] Rastgele masa iptal",
+  "[ACTIVE GUARD] Rastgele masa cevap",
+  "[ACTIVE GUARD] navigate",
+  "[KISS FALLBACK] response",
+  "[KISS FALLBACK] decision",
+  "[KISS FALLBACK HOST]",
+  "[KISS FALLBACK GLOBAL]",
+  "[PERFORMANCE] error",
+  "[MAINTENANCE HOST] soft-reload-run",
+  "[MAINTENANCE HOST] relaunch-run",
+  "[MAINTENANCE HOST] error",
+  "[INJECT ERROR]",
+  "window-all-closed",
+  "accounts window closed",
+  "before-quit",
+  "will-quit",
+  "quit"
+];
+
+const THROTTLE_PATTERNS = [
+  "[ACTIVE GUARD] Gozlem",
+  "[ACTIVE GUARD] profile-poke ",
+  "[ACTIVE GUARD] profile-poke-blocked",
+  "[GAME STATE]",
+  "[AUTO KISS] decision",
+  "[AUTO KISS] summary",
+  "[KISS FALLBACK] decision",
+  "[KISS FALLBACK HOST] summary",
+  "[PERFORMANCE] summary",
+  "[MAINTENANCE HOST] soft-reload-blocked",
+  "[MAINTENANCE HOST] relaunch-blocked",
+  "__KISS_ACTIVITY_EVENT__",
+  "__KISS_NAV_EVENT__",
+  "__KISS_NET_EVENT__",
+  "__KISS_ROSTER_EVENT__",
+  "[ACTIVE GUARD] Rastgele masa icin bekleniyor"
+];
+
+module.exports = {
+  CRITICAL_FLUSH_DEBOUNCE_MS,
+  CRITICAL_PATTERNS,
+  HEARTBEAT_INTERVAL_MS,
+  IMPORTANT_PATTERNS,
+  LIVE_FLUSH_INTERVAL_MS,
+  LIVE_LOG_FILE_NAME,
+  LOGGER_VERSION,
+  LOG_FILE_NAME,
+  MAX_FIELD_LENGTH,
+  THROTTLE_MS,
+  THROTTLE_PATTERNS
+};
