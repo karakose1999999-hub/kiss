@@ -1,0 +1,17 @@
+{
+  "name": "getkiss-new",
+  "version": "0.1.0",
+  "private": true,
+  "main": "main.js",
+  "scripts": {
+    "prestart": "node scripts/builder.js",
+    "start": "electron .",
+    "build": "node scripts/builder.js",
+    "watch": "node scripts/watcher.js",
+    "check": "node scripts/check.js"
+  },
+  "dependencies": {
+    "electron": "^39.0.0",
+    "chokidar": "^3.5.3"
+  }
+}
